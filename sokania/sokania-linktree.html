@@ -1,0 +1,366 @@
+<!--
+  ====================================================================
+  PANDUAN EDIT CEPAT (baca ini kalau mau ubah isi halaman)
+  1. Nomor WhatsApp   : cari kata "6282247041770"
+  2. Username Instagram: cari kata "sokania.tabanan" lalu ganti
+  3. Katalog harga    : cari bagian berjudul KATALOG di bawah, ganti
+                        nama tanaman, harga, dan foto (ganti src="...")
+  4. Foto profil      : cari class "avatar" lalu ganti isi src gambar
+  ====================================================================
+-->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sokania — Tanaman Hias Desa Petiga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F5EFE3;
+    --cream-dark: #EAE2D2;
+    --dark-green: #2F4A3D;
+    --soil: #6B4A32;
+    --leaf: #7A9B6E;
+    --terracotta: #C97B4A;
+    --gold: #C9A227;
+    --paper: #FBF8F1;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(122,155,110,0.14), transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(201,123,74,0.10), transparent 40%),
+      var(--cream);
+    font-family:'Manrope', sans-serif;
+    color: var(--dark-green);
+    display:flex;
+    justify-content:center;
+    padding: 48px 16px 80px;
+  }
+
+  .page{
+    width:100%;
+    max-width: 420px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    text-align:center;
+    margin-bottom: 32px;
+    opacity:0;
+    animation: riseIn 0.6s ease forwards;
+  }
+
+  .avatar{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: var(--dark-green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: 3px solid var(--paper);
+    box-shadow: 0 6px 18px rgba(47,74,61,0.25);
+  }
+  .avatar svg{ width: 52px; height: 52px; }
+
+  .brand-name{
+    font-family:'Fraunces', serif;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    margin: 0 0 6px;
+  }
+
+  .brand-tagline{
+    font-size: 14px;
+    color: var(--soil);
+    margin: 0;
+  }
+
+  .brand-tagline span{
+    display:inline-block;
+    width: 5px; height:5px;
+    border-radius:50%;
+    background: var(--leaf);
+    margin: 0 6px;
+    vertical-align: middle;
+  }
+
+  /* ---------- LINK TAGS (signature element) ---------- */
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+  }
+
+  .tag{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    padding: 16px 20px 16px 22px;
+    background: var(--paper);
+    border: 1px solid rgba(47,74,61,0.12);
+    border-radius: 14px;
+    text-decoration:none;
+    color: var(--dark-green);
+    font-weight: 600;
+    font-size: 15.5px;
+    box-shadow: 0 2px 0 rgba(47,74,61,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    opacity:0;
+    transform: translateY(14px);
+    animation: riseIn 0.55s ease forwards;
+  }
+
+  /* the "plant tag hole" — a punched circle like a real nursery label */
+  .tag::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left: -7px;
+    width: 14px; height:14px;
+    background: var(--cream);
+    border: 1px solid rgba(47,74,61,0.18);
+    border-radius:50%;
+    transform: translateY(-50%);
+  }
+
+  .tag:hover{
+    transform: translateY(-3px) rotate(-0.6deg);
+    box-shadow: 0 10px 20px rgba(47,74,61,0.14);
+    background: #ffffff;
+  }
+
+  .tag .icon{
+    flex-shrink:0;
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .tag .icon svg{ width:20px; height:20px; }
+
+  .tag.wa .icon{ background: rgba(122,155,110,0.18); color: var(--leaf); }
+  .tag.ig .icon{ background: rgba(201,123,74,0.18); color: var(--terracotta); }
+  .tag.maps .icon{ background: rgba(107,74,50,0.14); color: var(--soil); }
+  .tag.catalog .icon{ background: rgba(201,162,39,0.18); color: var(--gold); }
+
+  .tag .label small{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size: 10.5px;
+    font-weight:400;
+    color: var(--soil);
+    letter-spacing: 0.03em;
+    margin-top: 2px;
+  }
+
+  .tag .arrow{
+    margin-left:auto;
+    opacity:0.4;
+  }
+
+  /* ---------- DIVIDER ---------- */
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin: 40px 0 22px;
+    color: var(--soil);
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .divider::before, .divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: rgba(107,74,50,0.25);
+  }
+
+  /* ---------- KATALOG ---------- */
+  .catalog-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .plant-card{
+    background: var(--paper);
+    border-radius: 14px;
+    padding: 12px;
+    border: 1px solid rgba(47,74,61,0.10);
+  }
+
+  .plant-photo{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    background: var(--cream-dark);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--leaf);
+    margin-bottom: 10px;
+    border: 1px dashed rgba(122,155,110,0.5);
+  }
+  .plant-photo svg{ width: 30px; height:30px; }
+
+  .plant-name{
+    font-weight:700;
+    font-size: 13.5px;
+    margin: 0 0 4px;
+  }
+
+  .plant-price{
+    font-family:'Space Mono', monospace;
+    font-size: 12.5px;
+    color: var(--terracotta);
+    font-weight:700;
+    margin:0;
+  }
+
+  .catalog-note{
+    font-size: 12px;
+    color: var(--soil);
+    text-align:center;
+    margin-top: 16px;
+    line-height:1.5;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer{
+    text-align:center;
+    margin-top: 44px;
+    font-size: 11.5px;
+    color: var(--soil);
+    opacity: 0.75;
+    font-family:'Space Mono', monospace;
+  }
+
+  @keyframes riseIn{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .tag:nth-child(1){ animation-delay: 0.05s; }
+  .tag:nth-child(2){ animation-delay: 0.15s; }
+  .tag:nth-child(3){ animation-delay: 0.25s; }
+  .tag:nth-child(4){ animation-delay: 0.35s; }
+
+  @media (prefers-reduced-motion: reduce){
+    .header, .tag{ animation: none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================= HEADER ================= -->
+  <div class="header">
+    <div class="avatar">
+      <!-- ganti isi svg ini dengan <img src="foto-kamu.jpg"> kalau mau pakai foto asli -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F5EFE3" stroke-width="1.5">
+        <path d="M12 22V12M12 12C12 12 6 11 6 5C6 5 12 5 12 12C12 12 18 5 18 5C18 11 12 12 12 12Z" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1 class="brand-name">Sokania</h1>
+    <p class="brand-tagline">Tanaman Hias<span></span>Desa Petiga, Bali</p>
+  </div>
+
+  <!-- ================= LINKS ================= -->
+  <div class="links">
+
+    <a class="tag wa" href="https://wa.me/6282247041770" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.08-1.65-.1a14.5 14.5 0 01-5.6-3.95 6.5 6.5 0 01-1.36-2.68c-.2-.85.06-1.5.4-1.9.24-.28.55-.42.86-.42h.3c.24 0 .46.02.66.44.22.46.75 1.6.82 1.72.07.12.11.27.02.44-.09.17-.14.28-.28.43-.14.15-.29.34-.42.46-.14.13-.28.27-.12.53.16.26.7 1.16 1.5 1.88.9.8 1.68 1.08 1.94 1.2.26.12.42.1.58-.06.16-.16.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.06.11.06.62-.16 1.2z"/></svg>
+      </span>
+      <span class="label">Chat WhatsApp<small>Tanya stok & pesan</small></span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="tag ig" href="https://instagram.com/sokania.tabanan" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </span>
+      <span class="label">Follow Instagram<small>@sokania.tabanan — ganti sesuai akunmu</small></span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="tag maps" href="https://www.google.com/maps/search/?api=1&query=H54G%2BWXG+Petiga%2C+Kec.+Marga%2C+Kabupaten+Tabanan%2C+Bali+82181" target="_blank" rel="noopener">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-7.58 7-12A7 7 0 105 10c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      </span>
+      <span class="label">Lokasi Kebun<small>Desa Petiga, Marga, Tabanan</small></span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <a class="tag catalog" href="#katalog">
+      <span class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </span>
+      <span class="label">Katalog Harga<small>Lihat semua tanaman</small></span>
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+  </div>
+
+  <!-- ================= KATALOG ================= -->
+  <div id="katalog">
+    <div class="divider">Katalog Tanaman</div>
+
+    <div class="catalog-grid">
+
+      <div class="plant-card">
+        <div class="plant-photo">
+          <!-- ganti dengan: <img src="foto-monstera.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:10px"> -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 12 5 11 5 4C5 4 12 4 12 12C12 12 19 4 19 4C19 11 12 12 12 12Z"/></svg>
+        </div>
+        <p class="plant-name">Monstera</p>
+        <p class="plant-price">Rp —</p>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 12 5 11 5 4C5 4 12 4 12 12C12 12 19 4 19 4C19 11 12 12 12 12Z"/></svg>
+        </div>
+        <p class="plant-name">Aglonema</p>
+        <p class="plant-price">Rp —</p>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 12 5 11 5 4C5 4 12 4 12 12C12 12 19 4 19 4C19 11 12 12 12 12Z"/></svg>
+        </div>
+        <p class="plant-name">Sirih Gading</p>
+        <p class="plant-price">Rp —</p>
+      </div>
+
+      <div class="plant-card">
+        <div class="plant-photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V12M12 12C12 12 5 11 5 4C5 4 12 4 12 12C12 12 19 4 19 4C19 11 12 12 12 12Z"/></svg>
+        </div>
+        <p class="plant-name">Keladi</p>
+        <p class="plant-price">Rp —</p>
+      </div>
+
+    </div>
+
+    <p class="catalog-note">Kartu di atas contoh format. Ganti nama, harga, dan gambar sesuai foto tanaman kamu — caranya ada di panduan komentar paling atas file ini.</p>
+  </div>
+
+  <div class="footer">SOKANIA · TANAMAN HIAS · DESA PETIGA</div>
+
+</div>
+</body>
+</html>
